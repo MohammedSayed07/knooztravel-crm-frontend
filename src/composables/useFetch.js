@@ -1,11 +1,11 @@
 import {ref} from "vue";
 
 export function useFetch(url) {
-    const data = ref(null);
-    const isLoading = ref(false);
-    const error = ref(null);
+    let data = ref(null);
+    let isLoading = ref(false);
+    let error = ref(null);
 
-    const fetchData = async () => {
+    let fetchData = async () => {
         isLoading.value = true;
 
         try {

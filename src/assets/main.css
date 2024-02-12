@@ -3,23 +3,19 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  height: 100%;
+}
+
 #app {
   direction: rtl;
   font-weight: normal;
-}
-
-a,
-.green {
-  text-decoration: none;
-  color: rgb(0, 107, 189);
-  transition: 0.4s;
-  padding: 3px;
+  height: 100%;
 }
 
 @media (min-width: 1024px) {
   #app {
     display: grid;
-    grid-template-columns: 10rem 1fr;
-    padding: 0 1rem 0 2rem;
+    grid-template-columns: 6rem 1fr;
   }
 }

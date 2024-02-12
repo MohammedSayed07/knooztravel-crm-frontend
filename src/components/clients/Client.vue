@@ -1,18 +1,24 @@
-<template>
-    <div class="mt-2 lg:mt-0 py-1 lg:py-2 lg:px-1 bg-blue-200 rounded-lg text-center">
-        <p class="text-black">الأسم: {{ $props.client.name }}</p>
-        <p class="text-black">العنوان: {{ $props.client.address }}</p>
-        <p class="text-black">الرقم: {{ $props.client.mobile_number }}</p>
-        <p class="text-black">واتساب: {{ $props.client.whatsapp_number }}</p>
-        <p class="text-black">الرقم القومي: {{ $props.client.national_id }}</p>
-       
-    </div>
-</template>
-
 <script setup>
 import { defineProps } from 'vue';
-const props = defineProps({
+defineProps({
     client: Object
 });
 
+const emits = defineEmits(['emitClient'])
+
+
+const emitClient = (client) => {
+    emits('emitClient', client)
+}
 </script>
+
+<template>
+    <button class="flex rounded-lg items-center p-1 hover:bg-gray-300 transition-colors duration-300" @click="emitClient(client)">
+        <img src="@/assets/client.png" width="28"/>
+
+        <div class="mx-4 text-start">
+            <p class="text-black text-sm">{{ client.name }}</p>
+            <p class="text-black text-xs">{{ client.mobile_number }}</p>      
+        </div>
+    </button>
+</template>

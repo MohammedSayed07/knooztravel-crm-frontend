@@ -1,18 +1,22 @@
-<template>
-    <div 
-    class="lg:grid lg:grid-cols-4 lg:gap-2 m-4 max-w-8xl bg-gray-100 p-4 rounded-xl">
-        <Client
-        v-for="client in props.clients" :client="client"
-        />
-    </div>
-</template>
-
 <script setup>
 import Client from "@/components/clients/Client.vue"
-import { defineProps } from "vue";
+import { defineProps, ref } from "vue";
 
-const props = defineProps({
-    clients: Array
+defineProps({
+    clients: Array,
 })
 
+
+const emits = defineEmits(['emitClient'])
+
+const handleClientClicked = (payload) => {
+    emits('emitClient', payload)
+}
+
 </script>
+
+<template>
+    <div class="flex flex-col space-y-2 w-72 rounded-xl bg-gray-100">
+        <Client v-for="client in clients" :client="client" @emitClient="handleClientClicked"/>
+    </div>
+</template>
