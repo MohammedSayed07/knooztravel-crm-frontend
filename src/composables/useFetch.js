@@ -5,11 +5,10 @@ export function useFetch(url) {
     let isLoading = ref(false);
     let error = ref(null);
 
-    let fetchData = async () => {
+    let fetchData = async (id='') => {
         isLoading.value = true;
-
         try {
-            const response = await fetch(url);
+            const response = await fetch(url+id);
             if (!response.ok) {
                 throw Error('Network response was not ok');
             }

@@ -7,13 +7,13 @@ defineProps({
 const emits = defineEmits(['emitClient'])
 
 
-const emitClient = (client) => {
-    emits('emitClient', client)
+const emitClient = (clientId) => {
+    emits('emitClient', clientId)
 }
 </script>
 
 <template>
-    <button class="flex rounded-lg items-center p-1 hover:bg-gray-300 transition-colors duration-300" @click="emitClient(client)">
+    <button class="flex rounded-lg items-center p-1 hover:bg-gray-300 transition-colors duration-300" @click="emitClient(client.id)">
         <img src="@/assets/client.png" width="28"/>
 
         <div class="mx-4 text-start">

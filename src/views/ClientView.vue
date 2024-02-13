@@ -5,7 +5,7 @@ import { useFetch } from "@/composables/useFetch";
 import ClientList from "@/components/clients/ClientList.vue"
 import { onMounted, ref } from "vue";
 
-let {data, isLoading, error, fetchData} = useFetch("http://127.0.0.1:8000/api/clients")    
+let {data, isLoading, error, fetchData} = useFetch("http://127.0.0.1:8000/api/clients");   
 
 let showClientModal = ref(false);
 
@@ -32,12 +32,23 @@ const handleClickedClient = (payload) => {
             <p v-if="isLoading">Loading...</p>
             <p v-else-if="error">{{ error }}</p>
             <ClientList
+            class="scroll-smooth overflow-y-auto max-height hide-scroll"
             @emitClient="handleClickedClient"
             v-else :clients="data"/>
         </div>
 
         <div v-if="clientClicked" class="m-4 w-full">
-            <ClientDetails :client="clientClicked"/>
+            <ClientDetails :clientId="clientClicked"/>
         </div>
     </main>
 </template>
+
+<style scoped>
+.max-height {
+    height: 90vh;
+}
+
+.hide-scroll::-webkit-scrollbar {
+  display: none;
+}
+</style>

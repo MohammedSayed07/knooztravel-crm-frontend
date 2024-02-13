@@ -6,11 +6,10 @@ defineProps({
     clients: Array,
 })
 
-
 const emits = defineEmits(['emitClient'])
 
 const handleClientClicked = (payload) => {
-    emits('emitClient', payload)
+    emits('emitClient', payload)   
 }
 
 </script>
