@@ -16,6 +16,6 @@ const handleClientClicked = (payload) => {
 
 <template>
     <div class="flex flex-col space-y-2 w-72 rounded-xl bg-gray-100">
-        <Client v-for="client in clients" :client="client" @emitClient="handleClientClicked"/>
+        <Client v-for="client in clients" :key="client.id" :client="client" @emitClient="handleClientClicked"/>
     </div>
 </template>
